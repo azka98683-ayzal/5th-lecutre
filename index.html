@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍭 Cute Age Calculator | Great Job Emojis 🎀</title>
+    <!-- CUTE FONT: Quicksand (soft, rounded, adorable) -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* UNIQUE CUTE BACKGROUND (pastel gradient with soft sparkle) */
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* soft animated stars effect (extra cuteness) */
+        body::before {
+            content: "✨⭐💖✨";
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            font-size: 30px;
+            opacity: 0.2;
+            pointer-events: none;
+            text-align: center;
+            white-space: nowrap;
+            animation: floatStars 20s linear infinite;
+        }
+
+        @keyframes floatStars {
+            0% { transform: translateX(0%); opacity: 0.15; }
+            100% { transform: translateX(-50%); opacity: 0.3; }
+        }
+
+        /* main card – super rounded and fluffy */
+        .cute-card {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 8px rgba(255, 255, 255, 0.5);
+            overflow: hidden;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(1px);
+        }
+
+        .header {
+            background: #ffb7c5;
+            color: #fff0f5;
+            padding: 1.8rem;
+            text-align: center;
+            border-bottom: 3px dashed #ffe0e7;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 0 #d47a9e;
+        }
+
+        .header p {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            color: #fff9fc;
+        }
+
+        .content {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .section {
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 1.3rem 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            border: 1px solid #ffe2f0;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #c25a82;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin: 12px 0 5px;
+            color: #9b6b7c;
+            font-size: 0.9rem;
+        }
+
+        input, button {
+            padding: 10px 16px;
+            border-radius: 60px;
+            border: 1px solid #fbc2d5;
+            font-size: 0.95rem;
+            width: 100%;
+            margin: 5px 0 8px;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ff99bb;
+            box-shadow: 0 0 0 3px #ffc0d5;
+        }
+
+        button {
+            background: #ffb7c5;
+            color: #6b3e4f;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            width: auto;
+            padding: 10px 24px;
+            margin-top: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+            font-size: 0.9rem;
+        }
+
+        button:hover {
+            background: #ff9eb0;
+            transform: scale(0.96);
+            color: white;
+        }
+
+        .output {
+            background: #fff9fb;
+            padding: 14px;
+            border-radius: 28px;
+            font-family: 'Quicksand', monospace;
+            margin-top: 14px;
+            font-size: 0.9rem;
+            border-left: 5px solid #ffb7c5;
+            color: #4a2e38;
+            word-break: break-word;
+            box-shadow: inset 0 1px 3px #ffe0e7, 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .great-job {
+            background: #c5f0b1;
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 10px;
+            color: #3a6b1f;
+            letter-spacing: 0.5px;
+        }
+
+        footer {
+            background: #ffe6ef;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.85rem;
+            color: #b35d7a;
+            font-weight: 500;
+        }
+
+        @media (max-width: 700px) {
+            .content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cute-card">
+    <div class="header">
+        <h1>🍰 AGE CALCULATOR · VOTING · INTRO 🧁</h1>
+        <p>➕ Add numbers | 🔁 Loop 1→10 | ⚖️ Positive/Negative | 🌟 Great job emojis on every click!</p>
+    </div>
+
+    <div class="content">
+        <!-- 1️⃣ AGE & VOTING (no predefined) -->
+        <div class="section">
+            <h2>🎂 1. Age + Voting</h2>
+            <label>📅 Your Birth Year:</label>
+            <input type="number" id="birthYearInput" placeholder="e.g., 2010" value="">
+            <button id="calcAgeBtn">⚡ Calculate Age & Vote Status</button>
+            <div class="output" id="ageVotingOutput">
+                ✨ Enter birth year & click
+            </div>
+        </div>
+
+        <!-- 2️⃣ INTRODUCTION (template literal) -->
+        <div class="section">
+            <h2>📝 2. Introduction ✨</h2>
+            <label>👤 Your Name:</label>
+            <input type="text" id="introName" placeholder="e.g., Lulu" value="">
+            <label>🎂 Your Age:</label>
+            <input type="number" id="introAge" placeholder="Age" value="">
+            <label>🎬 Favorite Movie:</label>
+            <input type="text" id="introMovie" placeholder="e.g., Frozen" value="">
+            <button id="generateIntroBtn">✨ Generate Introduction</button>
+            <div class="output" id="introOutput">
+                💬 Your cute intro appears here
+            </div>
+        </div>
+
+        <!-- 3️⃣ ADD TWO NUMBERS -->
+        <div class="section">
+            <h2>➕ 3. Add Two Numbers</h2>
+            <label>Number A:</label>
+            <input type="number" id="numA" value="12">
+            <label>Number B:</label>
+            <input type="number" id="numB" value="8">
+            <button id="addBtn">➕ Calculate Sum</button>
+            <div class="output" id="addOutput">
+                🧮 Click to add
+            </div>
+        </div>
+
+        <!-- 4️⃣ FOR LOOP 1 to 10 -->
+        <div class="section">
+            <h2>🔄 4. For Loop (1 → 10)</h2>
+            <button id="loopBtn">▶ Run Loop & Show 1-10</button>
+            <div class="output" id="loopOutput">
+                🔁 Press button → for loop prints 1 to 10
+            </div>
+        </div>
+
+        <!-- 5️⃣ POSITIVE / NEGATIVE -->
+        <div class="section">
+            <h2>⚖️ 5. Positive / Negative</h2>
+            <label>Enter any number:</label>
+            <input type="number" id="checkNum" value="-5">
+            <button id="checkSignBtn">🔍 Check Sign</button>
+            <div class="output" id="signOutput">
+                📊 Result will show positive/negative/zero
+            </div>
+        </div>
+
+        <!-- 6️⃣ DYNAMIC VARIABLES (no predefined) -->
+        <div class="section">
+            <h2>📦 6. Your Info (no predefined)</h2>
+            <div class="output" id="varOutput">
+                ⭐ No data yet — fill "Introduction" section above and click "Generate Introduction" to save your info.
+            </div>
+            <button id="refreshInfoBtn">🔄 Refresh my info from intro form</button>
+        </div>
+    </div>
+    <footer>
+        🧸 Every click brings "Great job! 🎉👏✨" — All functions: calculateAge, voting eligibility, template literal intro, addNumbers, for loop, if/else.
+    </footer>
+</div>
+
+<script>
+    // ========== CORE FUNCTIONS (same powerful logic, now extra cute) ==========
+    function getCurrentYear() { return new Date().getFullYear(); }
+
+    function calculateAge(birthYear) {
+        return getCurrentYear() - birthYear;
+    }
+
+    function checkVotingEligibility(age) {
+        if (age >= 18) {
+            return "✅🗳️ You ARE eligible to vote! 🗳️✅";
+        } else {
+            return `❌ Not eligible. Need ${18 - age} more year(s). 🌱`;
+        }
+    }
+
+    function getIntroduction(name, age, favoriteMovie) {
+        return `🎀 Hello cutie! My name is ${name}. I am ${age} years old, and my favorite movie is "${favoriteMovie}". 🍿💖`;
+    }
+
+    function addNumbers(a, b) {
+        return a + b;
+    }
+
+    function getNumbersOneToTen() {
+        let arr = [];
+        for (let i = 1; i <= 10; i++) {
+            arr.push(i);
+        }
+        return arr;
+    }
+
+    function checkPositiveNegative(number) {
+        if (number > 0) return `${number} is POSITIVE 📈✨⭐`;
+        else if (number < 0) return `${number} is NEGATIVE 📉❄️`;
+        else return `${number} is ZERO 🟢⚪`;
+    }
+
+    // helper: show great job emojis
+    function showGreatJob(outputElement, resultText, extraEmoji = "🎉👏✨") {
+        outputElement.innerHTML = `${resultText}<br><span class="great-job">🎀 GREAT JOB! ${extraEmoji} 🎀</span>`;
+    }
+
+    // no predefined name/age/movie – store only when user enters
+    let currentName = "";
+    let currentAge = "";
+    let currentMovie = "";
+
+    // DOM elements
+    const birthInput = document.getElementById('birthYearInput');
+    const ageVotingOutput = document.getElementById('ageVotingOutput');
+    const introName = document.getElementById('introName');
+    const introAge = document.getElementById('introAge');
+    const introMovie = document.getElementById('introMovie');
+    const introOutput = document.getElementById('introOutput');
+    const numA = document.getElementById('numA');
+    const numB = document.getElementById('numB');
+    const addOutput = document.getElementById('addOutput');
+    const loopOutput = document.getElementById('loopOutput');
+    const checkNum = document.getElementById('checkNum');
+    const signOutput = document.getElementById('signOutput');
+    const varOutput = document.getElementById('varOutput');
+    const refreshInfoBtn = document.getElementById('refreshInfoBtn');
+
+    // 1️⃣ Age & Voting
+    document.getElementById('calcAgeBtn').addEventListener('click', () => {
+        let birthYear = parseInt(birthInput.value);
+        if (isNaN(birthYear) || birthInput.value.trim() === "") {
+            showGreatJob(ageVotingOutput, "🌸 Please enter a valid birth year! 🌸", "📅❓");
+            return;
+        }
+        const age = calculateAge(birthYear);
+        if (age < 0 || age > 120) {
+            showGreatJob(ageVotingOutput, "🍭 Unrealistic birth year? Use real year (e.g., 1995) 🍭", "🧸");
+            return;
+        }
+        const votingMsg = checkVotingEligibility(age);
+        const finalMsg = `📅 Birth year: ${birthYear} → 🎂 Age: ${age} years<br>🗳️ ${votingMsg}`;
+        showGreatJob(ageVotingOutput, finalMsg, "🎉👏🗳️💖");
+    });
+
+    // 2️⃣ Introduction (template literal)
+    document.getElementById('generateIntroBtn').addEventListener('click', () => {
+        let nameVal = introName.value.trim();
+        let ageVal = introAge.value.trim();
+        let movieVal = introMovie.value.trim();
+
+        if (nameVal === "") nameVal = "Sweetie";
+        if (ageVal === "") ageVal = "?";
+        if (movieVal === "") movieVal = "a lovely movie";
+
+        currentName = nameVal;
+        currentAge = ageVal;
+        currentMovie = movieVal;
+
+        const introText = getIntroduction(currentName, currentAge, currentMovie);
+        showGreatJob(introOutput, introText, "🎬🍿🎀");
+    });
+
+    // 3️⃣ Add two numbers
+    document.getElementById('addBtn').addEventListener('click', () => {
+        let a = parseFloat(numA.value);
+        let b = parseFloat(numB.value);
+        if (isNaN(a)) a = 0;
+        if (isNaN(b)) b = 0;
+        const sum = addNumbers(a, b);
+        showGreatJob(addOutput, `🔢 ${a} + ${b} = <strong>${sum}</strong>`, "➕🎉✨");
+    });
+
+    // 4️⃣ For loop 1-10 + console print
+    document.getElementById('loopBtn').addEventListener('click', () => {
+        const numbersArray = getNumbersOneToTen();
+        const loopDisplay = `🔁 1 → 10: ${numbersArray.join(' → ')}<br>✅ For loop done! Also printed to console.`;
+        showGreatJob(loopOutput, loopDisplay, "🔄💖🔁");
+        console.log("🎀 FOR LOOP 1 to 10 (cute edition):");
+        for (let i = 1; i <= 10; i++) {
+            console.log(i);
+        }
+    });
+
+    // 5️⃣ Positive/Negative check
+    document.getElementById('checkSignBtn').addEventListener('click', () => {
+        let num = parseFloat(checkNum.value);
+        if (isNaN(num)) num = 0;
+        const signResult = checkPositiveNegative(num);
+        showGreatJob(signOutput, `🔎 ${signResult}`, "⚖️🎀");
+    });
+
+    // 6️⃣ Update section 6 (NO predefined – shows only user's entered data)
+    function updateVarDisplay() {
+        if (currentName === "" && currentAge === "" && currentMovie === "") {
+            varOutput.innerHTML = `🍬 No info yet — please go to section 2 (Introduction), enter name, age & favorite movie and click "Generate Introduction". Then click refresh! 🍬<br><span class="great-job">✨💖✨</span>`;
+        } else {
+            varOutput.innerHTML = `
+                📌 <strong>Your saved info (from intro form):</strong><br>
+                👤 Name: ${currentName}<br>
+                🎂 Age: ${currentAge}<br>
+                🎬 Favorite Movie: "${currentMovie}"<br>
+                <hr>
+                🧸 Template literal intro:<br>
+                "${getIntroduction(currentName, currentAge, currentMovie)}"
+                <br><span class="great-job">🎉 Great job! Variables updated 🎉</span>
+            `;
+        }
+    }
+
+    refreshInfoBtn.addEventListener('click', () => {
+        let nameVal = introName.value.trim();
+        let ageVal = introAge.value.trim();
+        let movieVal = introMovie.value.trim();
+        if (nameVal !== "") currentName = nameVal;
+        if (ageVal !== "") currentAge = ageVal;
+        if (movieVal !== "") currentMovie = movieVal;
+        if (nameVal === "" && currentName === "") currentName = "Not provided";
+        if (ageVal === "" && currentAge === "") currentAge = "?";
+        if (movieVal === "" && currentMovie === "") currentMovie = "Not provided";
+        updateVarDisplay();
+    });
+
+    // initial message: no predefined values
+    varOutput.innerHTML = `🍰 No predefined variables. Enter your name, age & fav movie in section 2 → click "Generate Introduction" → then click "Refresh my info" to see them here. 🍰`;
+
+    console.log("🌸 Cute font mode active! All functions ready, no predefined values, great job emojis on every action! 🌸");
+</script>
+</body>
+</html>
